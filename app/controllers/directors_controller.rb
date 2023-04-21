@@ -15,4 +15,11 @@ def youngest
   render({ :template => "director_templates/youngest.html.erb" })
 end
 
+def director_details
+  # params looks like this {"an_id"=>"42"}
+  the_id = params.fetch("an_id")
+  @the_director = Director.where({ :id => the_id }).at(0)
+  render({ :template => "director_templates/show.html.erb" })
+end
+
 end
